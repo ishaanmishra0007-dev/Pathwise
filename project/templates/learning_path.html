@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>My Learning Path - PathWise</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #111827;
+        }
+
+        .header {
+            background: white;
+            padding: 25px 45px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .header p {
+            margin: 8px 0 0;
+            color: #6b7280;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 35px auto;
+            padding: 0 25px;
+        }
+
+        .summary {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .summary h2 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .summary p {
+            color: #6b7280;
+            font-size: 17px;
+        }
+
+        .level {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 9px 18px;
+            border-radius: 20px;
+            background: #eef2ff;
+            color: #3730a3;
+            font-weight: bold;
+        }
+
+        .section-title {
+            font-size: 26px;
+            margin: 35px 0 18px;
+        }
+
+        /* ================================
+           LEARNING PATH
+           ================================ */
+
+        .course-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .course-title {
+            margin: 0 0 8px;
+            font-size: 23px;
+        }
+
+        .course-message {
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        .topic {
+            padding: 18px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fafafa;
+        }
+
+        .topic-name {
+            font-weight: 600;
+        }
+
+        .status {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* ================================
+           RESOURCE CARDS
+           ================================ */
+
+        .resource-section {
+            margin-top: 35px;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .resource-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .resource-card h3 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .resource-card p {
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        .resource-type {
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .resource-link {
+            display: inline-block;
+            margin-top: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        .author {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* ================================
+           BUTTONS
+           ================================ */
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: #111827;
+            color: white;
+        }
+
+        .secondary {
+            background: white;
+            color: #111827;
+            border: 1px solid #d1d5db;
+        }
+
+        /* ================================
+           RESPONSIVE
+           ================================ */
+
+        @media (max-width: 850px) {
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1>
+            My Learning Path
+        </h1>
+
+        <p>
+            Personalized learning recommendations based on your assessment
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+
+        <!-- SUMMARY -->
+
+        <div class="summary">
+
+            <h2>
+                {{ career.name }}
+            </h2>
+
+            <p>
+                Your learning path has been created based on
+                your assessment performance.
+            </p>
+
+            <div class="level">
+                Current Level: {{ level }}
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             LEARNING PATH
+             ================================ -->
+
+        <h2 class="section-title">
+            Your Learning Path
+        </h2>
+
+
+        {% if learning_path %}
+
+            {% for item in learning_path %}
+
+                <div class="course-card">
+
+                    <h3 class="course-title">
+                        {{ item.course.name }}
+                    </h3>
+
+                    <p class="course-message">
+                        {{ item.message }}
+                    </p>
+
+
+                    {% for topic in item.topics %}
+
+                        <div class="topic">
+
+                            <div class="topic-name">
+
+                                {{ loop.index }}.
+                                {{ topic.name }}
+
+                            </div>
+
+                            <div class="status">
+                                Not Started
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="course-card">
+
+                <h3>
+                    No learning content available
+                </h3>
+
+                <p>
+                    Courses and topics for this career
+                    have not been added yet.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- ================================
+             RECOMMENDED COURSES
+             ================================ -->
+
+        <div class="resource-section">
+
+            <h2 class="section-title">
+                🎓 Recommended Courses
+            </h2>
+
+            <div class="resource-grid">
+
+                {% for course in career_resources.courses %}
+
+                    <div class="resource-card">
+
+                        <div class="resource-type">
+                            Course
+                        </div>
+
+                        <h3>
+                            {{ course.name }}
+                        </h3>
+
+                        <p>
+                            {{ course.description }}
+                        </p>
+
+                        <a
+                            href="{{ course.url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="resource-link"
+                        >
+                            View Course →
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             RECOMMENDED BOOKS
+             ================================ -->
+
+        <div class="resource-section">
+
+            <h2 class="section-title">
+                📚 Recommended Books
+            </h2>
+
+            <div class="resource-grid">
+
+                {% for book in career_resources.books %}
+
+                    <div class="resource-card">
+
+                        <div class="resource-type">
+                            Book
+                        </div>
+
+                        <h3>
+                            {{ book.name }}
+                        </h3>
+
+                        <div class="author">
+                            {{ book.author }}
+                        </div>
+
+                        <a
+                            href="{{ book.url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="resource-link"
+                        >
+                            View Book →
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             USEFUL RESOURCES
+             ================================ -->
+
+        <div class="resource-section">
+
+            <h2 class="section-title">
+                🔗 Useful Resources
+            </h2>
+
+            <div class="resource-grid">
+
+                {% for resource in career_resources.resources %}
+
+                    <div class="resource-card">
+
+                        <div class="resource-type">
+                            Resource
+                        </div>
+
+                        <h3>
+                            {{ resource.name }}
+                        </h3>
+
+                        <p>
+                            {{ resource.description }}
+                        </p>
+
+                        <a
+                            href="{{ resource.url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="resource-link"
+                        >
+                            Open Resource →
+                        </a>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="buttons">
+
+            <a
+                href="{{ url_for('main.student_dashboard') }}"
+                class="btn secondary"
+            >
+                ← Dashboard
+            </a>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

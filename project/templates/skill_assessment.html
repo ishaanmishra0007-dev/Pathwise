@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>{{ career.name }} Skill Assessment</h1>
+
+    <hr>
+
+    <p class="intro">
+        Answer the following questions to help us determine
+        your current knowledge level.
+    </p>
+
+    {% if questions %}
+
+    <form method="POST">
+
+        {% for question in questions %}
+
+        <div class="question-card">
+
+            <h3>
+                {{ loop.index }}. {{ question.text }}
+            </h3>
+
+            <label>
+                <input
+                    type="radio"
+                    name="question_{{ question.id }}"
+                    value="A"
+                >
+                {{ question.option_a }}
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="question_{{ question.id }}"
+                    value="B"
+                >
+                {{ question.option_b }}
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="question_{{ question.id }}"
+                    value="C"
+                >
+                {{ question.option_c }}
+            </label>
+
+            <label>
+                <input
+                    type="radio"
+                    name="question_{{ question.id }}"
+                    value="D"
+                >
+                {{ question.option_d }}
+            </label>
+
+        </div>
+
+        {% endfor %}
+
+        <button type="submit" class="submit-button">
+            Submit Assessment
+        </button>
+
+    </form>
+
+    {% else %}
+
+    <div class="empty-message">
+
+        <h3>No assessment questions available.</h3>
+
+        <p>
+            There are currently no questions available
+            for {{ career.name }}.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+
+<style>
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.intro {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.question-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 20px 0;
+    background: white;
+}
+
+.question-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.question-card label {
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.question-card label:hover {
+    background: #f5f5f5;
+}
+
+.question-card input {
+    margin-right: 10px;
+}
+
+.submit-button {
+    margin-top: 15px;
+    padding: 13px 25px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    opacity: 0.8;
+}
+
+.empty-message {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+</style>
+
+{% endblock %}

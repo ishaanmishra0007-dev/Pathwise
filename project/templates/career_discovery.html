@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="quiz-container">
+
+    <div class="quiz-header">
+
+        <h1>Career Discovery Quiz</h1>
+
+        <p>
+            Not sure which career is right for you?
+            Answer these 10 questions based on your interests
+            and preferences.
+        </p>
+
+        <div class="quiz-info">
+            10 Questions &nbsp; | &nbsp; 4 Career Options
+        </div>
+
+    </div>
+
+
+    <form method="POST">
+
+        {% for question in questions %}
+
+        <div class="question-card">
+
+            <div class="question-number">
+                Question {{ loop.index }} of 10
+            </div>
+
+            <h2>
+                {{ question.question }}
+            </h2>
+
+
+            <div class="options">
+
+                {% for key, option in question.options.items() %}
+
+                <label class="option">
+
+                    <input
+                        type="radio"
+                        name="question_{{ question.id }}"
+                        value="{{ key }}"
+                        required
+                    >
+
+                    <span>
+                        <strong>{{ key }}.</strong>
+                        {{ option }}
+                    </span>
+
+                </label>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+
+        <div class="submit-section">
+
+            <button
+                type="submit"
+                class="submit-button">
+
+                Find My Career →
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<style>
+
+.quiz-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.quiz-header {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 25px;
+}
+
+.quiz-header h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.quiz-header p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.quiz-info {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.question-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.question-number {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.question-card h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    padding: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #f5f5f5;
+}
+
+.option input {
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+}
+
+.option span {
+    line-height: 1.5;
+}
+
+.submit-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.submit-button {
+    padding: 14px 30px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    opacity: 0.8;
+}
+
+</style>
+
+{% endblock %}

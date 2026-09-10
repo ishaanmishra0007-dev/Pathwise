@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Assessment Result - PathWise</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #111827;
+        }
+
+        .container {
+            max-width: 1250px;
+            margin: 30px auto;
+            padding: 0 30px;
+        }
+
+        .top-line {
+            height: 1px;
+            background: #d1d5db;
+            margin-bottom: 45px;
+        }
+
+        .result-card {
+            background: white;
+            border: 1px solid #d9dde3;
+            border-radius: 14px;
+            padding: 55px 40px;
+            text-align: center;
+        }
+
+        .career {
+            font-size: 46px;
+            font-weight: 700;
+            margin-bottom: 55px;
+        }
+
+        .score-title {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .score {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 65px;
+        }
+
+        .level-title {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .level {
+            display: inline-block;
+            padding: 20px 38px;
+            border: 1px solid #d9dde3;
+            border-radius: 10px;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 65px;
+        }
+
+        .next-card {
+            background: white;
+            border: 1px solid #d9dde3;
+            border-radius: 14px;
+            padding: 40px;
+            margin-top: 25px;
+        }
+
+        .next-card h2 {
+            font-size: 32px;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .next-card p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .next-card strong {
+            font-weight: 700;
+        }
+
+        .buttons {
+            margin-top: 45px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .primary {
+            background: #000000;
+            color: white;
+        }
+
+        .secondary {
+            background: white;
+            color: #111827;
+            border: 1px solid #d1d5db;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="top-line"></div>
+
+
+        <!-- RESULT -->
+
+        <div class="result-card">
+
+            <div class="career">
+                {{ career.name }}
+            </div>
+
+            <div class="score-title">
+                Your Assessment Score
+            </div>
+
+            <div class="score">
+                {{ score }}%
+            </div>
+
+            <div class="level-title">
+                Your Current Level
+            </div>
+
+            <div class="level">
+                {{ level }}
+            </div>
+
+        </div>
+
+
+        <!-- WHAT'S NEXT -->
+
+        <div class="next-card">
+
+            <h2>
+                What's Next?
+            </h2>
+
+            <p>
+                Based on your assessment, PathWise has identified
+                your current knowledge level as
+                <strong>{{ level }}</strong>.
+            </p>
+
+            <p>
+                Your personalized learning path has been created
+                according to this level.
+            </p>
+
+
+            <div class="buttons">
+
+                <a
+                    href="{{ url_for('main.learning_path') }}"
+                    class="btn primary"
+                >
+                    View My Learning Path →
+                </a>
+
+                <a
+                    href="{{ url_for('main.student_dashboard') }}"
+                    class="btn secondary"
+                >
+                    Go to Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

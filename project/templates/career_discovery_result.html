@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="result-container">
+
+    <div class="result-card">
+
+        <h1>Your Career Recommendation</h1>
+
+        <p class="subtitle">
+            Based on your answers, PathWise recommends:
+        </p>
+
+
+        <div class="career-name">
+
+            {{ career.name }}
+
+        </div>
+
+
+        <p class="match-score">
+
+            Match Score:
+            <strong>{{ score }}%</strong>
+
+        </p>
+
+
+        {% if career.description %}
+
+        <p class="description">
+
+            {{ career.description }}
+
+        </p>
+
+        {% endif %}
+
+
+        <hr>
+
+
+        <h2>Your Career Scores</h2>
+
+        <div class="scores">
+
+            {% for career_name, career_score in scores.items() %}
+
+            <div class="score-row">
+
+                <span>
+                    {{ career_name }}
+                </span>
+
+                <strong>
+                    {{ career_score }}/10
+                </strong>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <div class="next-step">
+
+            <h3>What's Next?</h3>
+
+            <p>
+                Your recommended career has been saved to your
+                PathWise profile. Your personalized learning path
+                will now be created for this career.
+            </p>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <a
+                href="{{ url_for('main.learning_path') }}"
+                class="primary-button">
+
+                View My Learning Path →
+
+            </a>
+
+
+            <a
+                href="{{ url_for('main.student_dashboard') }}"
+                class="secondary-button">
+
+                Go to Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+
+.result-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.result-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+}
+
+.result-card h1 {
+    margin-top: 0;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 17px;
+}
+
+.career-name {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 25px 0 10px;
+}
+
+.match-score {
+    font-size: 18px;
+}
+
+.description {
+    color: #555;
+    line-height: 1.6;
+    margin: 25px 0;
+}
+
+.result-card hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+}
+
+.result-card h2 {
+    font-size: 21px;
+}
+
+.scores {
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+.score-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.next-step {
+    background: #f7f7f7;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.next-step h3 {
+    margin-top: 0;
+}
+
+.next-step p {
+    color: #555;
+    line-height: 1.5;
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+.primary-button,
+.secondary-button {
+    display: inline-block;
+    padding: 13px 22px;
+    border-radius: 7px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.primary-button {
+    background: black;
+    color: white;
+}
+
+.secondary-button {
+    border: 1px solid #222;
+    color: black;
+    background: white;
+}
+
+.primary-button:hover {
+    opacity: 0.8;
+}
+
+.secondary-button:hover {
+    background: #f5f5f5;
+}
+
+</style>
+
+{% endblock %}
