@@ -12,7 +12,6 @@ app.register_blueprint(teacher)
 
 @app.route("/")
 def home():
-
     return "PathWise is running!"
 
 

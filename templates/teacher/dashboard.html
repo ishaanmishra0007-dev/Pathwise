@@ -35,7 +35,7 @@ Teacher Dashboard
     <div class="col-md-4">
         <div class="stat-card">
             <h6>Total Students</h6>
-            <div class="stat-number">25</div>
+            <div class="stat-number">{{ student_count }}</div>
         </div>
     </div>
 
@@ -43,7 +43,7 @@ Teacher Dashboard
     <div class="col-md-4">
         <div class="stat-card">
             <h6>Materials</h6>
-            <div class="stat-number">12</div>
+            <div class="stat-number">{{ material_count }}</div>
         </div>
     </div>
 
@@ -51,7 +51,7 @@ Teacher Dashboard
     <div class="col-md-4">
         <div class="stat-card">
             <h6>Tests</h6>
-            <div class="stat-number">5</div>
+            <div class="stat-number">{{ test_count }}</div>
         </div>
     </div>
 
@@ -79,28 +79,26 @@ Teacher Dashboard
 
             <tbody>
 
-                <tr>
-                    <td>Rahul</td>
-                    <td>Data Analyst</td>
-                    <td>72%</td>
-                    <td>81%</td>
-                </tr>
+    {% for student in students %}
 
-                <tr>
-                    <td>Priya</td>
-                    <td>Web Developer</td>
-                    <td>64%</td>
-                    <td>74%</td>
-                </tr>
+    <tr>
+        <td>{{ student[0] }}</td>
+        <td>{{ student[1] or "Not Selected" }}</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
 
-                <tr>
-                    <td>Aman</td>
-                    <td>AI/ML</td>
-                    <td>55%</td>
-                    <td>68%</td>
-                </tr>
+    {% else %}
 
-            </tbody>
+    <tr>
+        <td colspan="4" class="text-center">
+            No students found
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</tbody>
 
         </table>
 
