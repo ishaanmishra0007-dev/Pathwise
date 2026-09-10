@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Student Dashboard</h1>
+<p>Welcome, {{ current_user.name }}!</p>
+
+<a href="{{ url_for('main.quiz') }}">Take Career Quiz</a>
+
+{% if current_user.career_path %}
+    <p>Your recommended path: <strong>{{ current_user.career_path.name }}</strong></p>
+{% endif %}
+
+{% if materials %}
+    <h3>Your Roadmap</h3>
+    <ol>
+        {% for material in materials %}
+            <li>
+                <a href="{{ material.content_url }}" target="_blank">{{ material.title }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <p>Take the quiz to unlock your personalized roadmap!</p>
+{% endif %}
+{% endblock %}

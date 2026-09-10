@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Career Path Quiz</h2>
+<form method="POST">
+    {% for question in questions %}
+        <div class="quiz-question">
+            <p><strong>{{ question.text }}</strong></p>
+            {% for option in question.options %}
+                <label>
+                    <input type="radio" name="question_{{ question.id }}" value="{{ option.id }}" required>
+                    {{ option.text }}
+                </label><br>
+            {% endfor %}
+        </div>
+        <hr>
+    {% endfor %}
+    <button type="submit">Submit Quiz</button>
+</form>
+{% endblock %}
