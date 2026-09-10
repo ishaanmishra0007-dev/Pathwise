@@ -1,0 +1,53 @@
+body {
+    background-color: #f5f6f8;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    min-height: calc(100vh - 56px);
+    background-color: white;
+    border-right: 1px solid #ddd;
+    padding: 20px 10px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px 12px;
+    margin-bottom: 5px;
+
+    text-decoration: none;
+    color: #333;
+
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background-color: #e9f0ff;
+    color: #0d6efd;
+}
+
+
+/* Main content */
+
+.main-content {
+    padding: 25px;
+}
+
+
+/* Dashboard cards */
+
+.stat-card {
+    padding: 20px;
+    background-color: white;
+
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+}

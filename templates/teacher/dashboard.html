@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}
+Teacher Dashboard
+{% endblock %}
+
+{% block sidebar %}
+
+<h6 class="text-muted px-2">TEACHER</h6>
+
+<a href="/teacher/dashboard">Dashboard</a>
+<a href="/teacher/students">Students</a>
+<a href="/teacher/materials">Materials</a>
+<a href="/teacher/tests">Tests</a>
+<a href="/teacher/results">Results</a>
+
+<hr>
+
+<a href="/logout">Logout</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+<h2>Teacher Dashboard</h2>
+
+<p class="text-muted">
+    Manage students, learning materials and tests.
+</p>
+
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <h6>Total Students</h6>
+            <div class="stat-number">25</div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <h6>Materials</h6>
+            <div class="stat-number">12</div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
+        <div class="stat-card">
+            <h6>Tests</h6>
+            <div class="stat-number">5</div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="card mt-4">
+
+    <div class="card-header">
+        Recent Student Activity
+    </div>
+
+    <div class="card-body">
+
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Career</th>
+                    <th>Progress</th>
+                    <th>Last Score</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Rahul</td>
+                    <td>Data Analyst</td>
+                    <td>72%</td>
+                    <td>81%</td>
+                </tr>
+
+                <tr>
+                    <td>Priya</td>
+                    <td>Web Developer</td>
+                    <td>64%</td>
+                    <td>74%</td>
+                </tr>
+
+                <tr>
+                    <td>Aman</td>
+                    <td>AI/ML</td>
+                    <td>55%</td>
+                    <td>68%</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
