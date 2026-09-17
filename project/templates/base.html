@@ -14,10 +14,6 @@
 
     <style>
 
-        /* =========================
-           BASIC RESET
-        ========================= */
-
         * {
             box-sizing: border-box;
         }
@@ -30,9 +26,10 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7fa;
-            color: #172033;
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            background: #f4f6f2;
+            color: #202923;
+            line-height: 1.5;
         }
 
         a {
@@ -45,9 +42,11 @@
         ========================= */
 
         .navbar {
-            height: 68px;
+            height: 76px;
+
             background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
+
+            border-bottom: 1px solid #dce2dc;
 
             display: flex;
             align-items: center;
@@ -57,37 +56,61 @@
         }
 
 
-        /* PathWise brand */
+        /* PathWise Logo */
 
         .navbar-brand {
             display: flex;
             align-items: center;
-            gap: 11px;
+            gap: 12px;
 
-            color: #172033;
-            font-size: 21px;
+            color: #202923;
+
+            font-size: 23px;
             font-weight: 700;
+
+            letter-spacing: -0.5px;
         }
 
-        .brand-icon {
-            width: 36px;
-            height: 36px;
 
-            background: #1f5f9b;
-            color: #ffffff;
+        .brand-logo {
+            width: 42px;
+            height: 42px;
 
-            border-radius: 7px;
+            border-radius: 10px;
+
+            background: #3f6b57;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            font-size: 14px;
+            color: white;
+
+            font-size: 15px;
             font-weight: 700;
         }
 
 
-        /* Navigation links */
+        .brand-name {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+
+        .brand-tagline {
+            margin-top: 3px;
+
+            color: #789084;
+
+            font-size: 10px;
+            font-weight: 500;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* Navigation */
 
         .navbar-links {
             display: flex;
@@ -96,7 +119,8 @@
         }
 
         .navbar-links a {
-            color: #4b5563;
+            color: #4e5b53;
+
             font-size: 14px;
             font-weight: 500;
 
@@ -104,24 +128,26 @@
         }
 
         .navbar-links a:hover {
-            color: #1f5f9b;
+            color: #3f6b57;
         }
 
 
-        /* Logout button */
+        /* Logout */
 
         .nav-logout {
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
+            border: 1px solid #cfd8d1;
 
-            padding: 8px 15px;
+            border-radius: 8px;
 
-            color: #374151 !important;
+            padding: 9px 16px;
+
+            color: #37423b !important;
         }
 
         .nav-logout:hover {
-            border-color: #1f5f9b;
-            color: #1f5f9b !important;
+            border-color: #3f6b57;
+
+            color: #3f6b57 !important;
         }
 
 
@@ -133,7 +159,7 @@
             width: 90%;
             max-width: 1100px;
 
-            margin: 20px auto 0;
+            margin: 18px auto 0;
         }
 
         .flash-message {
@@ -141,10 +167,11 @@
 
             background: #ffffff;
 
-            border: 1px solid #dbe1e8;
-            border-radius: 7px;
+            border: 1px solid #dce2dc;
 
-            color: #374151;
+            border-radius: 8px;
+
+            color: #37423b;
 
             font-size: 14px;
 
@@ -157,7 +184,7 @@
         ========================= */
 
         .main-content {
-            min-height: calc(100vh - 128px);
+            min-height: calc(100vh - 136px);
         }
 
 
@@ -167,12 +194,13 @@
 
         .btn {
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
 
-            padding: 11px 18px;
+            padding: 11px 19px;
 
-            border-radius: 7px;
+            border-radius: 8px;
 
             font-size: 14px;
             font-weight: 600;
@@ -193,25 +221,27 @@
 
 
         .btn-primary {
-            background: #1f5f9b;
+            background: #3f6b57;
             color: #ffffff;
         }
 
         .btn-primary:hover {
-            background: #174b7c;
+            background: #315442;
         }
 
 
         .btn-secondary {
             background: #ffffff;
-            color: #374151;
 
-            border-color: #d1d5db;
+            color: #37423b;
+
+            border-color: #d1d8d2;
         }
 
         .btn-secondary:hover {
-            border-color: #1f5f9b;
-            color: #1f5f9b;
+            border-color: #3f6b57;
+
+            color: #3f6b57;
         }
 
 
@@ -221,20 +251,23 @@
 
         .footer {
             height: 60px;
+            min-height: 60px;
 
             background: #ffffff;
 
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid #dce2dc;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            color: #9ca3af;
+            color: #89938c;
 
             font-size: 12px;
 
             text-align: center;
+
+            padding: 15px;
         }
 
 
@@ -246,6 +279,7 @@
 
             .navbar {
                 height: auto;
+
                 min-height: 68px;
 
                 padding: 12px 20px;
@@ -263,9 +297,10 @@
                 font-size: 13px;
             }
 
-            .main-content {
-                min-height: calc(100vh - 140px);
+            .brand-tagline {
+                display: none;
             }
+
         }
 
     </style>
@@ -276,21 +311,27 @@
 <body>
 
 
-    <!-- =========================
-         NAVIGATION BAR
-    ========================== -->
+    <!-- NAVBAR -->
 
     <nav class="navbar">
 
         <a href="{{ url_for('main.index') }}"
            class="navbar-brand">
 
-            <span class="brand-icon">
+            <span class="brand-logo">
                 PW
             </span>
 
-            <span>
-                PathWise
+            <span class="brand-name">
+
+                <span>
+                    PathWise
+                </span>
+
+                <span class="brand-tagline">
+                    LEARN · PLAN · GROW
+                </span>
+
             </span>
 
         </a>
@@ -326,9 +367,7 @@
     </nav>
 
 
-    <!-- =========================
-         FLASH MESSAGES
-    ========================== -->
+    <!-- FLASH MESSAGES -->
 
     <div class="flash-container">
 
@@ -351,9 +390,7 @@
     </div>
 
 
-    <!-- =========================
-         PAGE CONTENT
-    ========================== -->
+    <!-- PAGE CONTENT -->
 
     <main class="main-content">
 
@@ -364,9 +401,7 @@
     </main>
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+    <!-- FOOTER -->
 
     <footer class="footer">
 

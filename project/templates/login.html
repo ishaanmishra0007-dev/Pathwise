@@ -20,10 +20,10 @@
 
     .login-card {
         background: #ffffff;
-        border: 1px solid #e3e7ec;
+        border: 1px solid #dce2dc;
         border-radius: 12px;
         padding: 40px;
-        box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+        box-shadow: 0 8px 30px rgba(32, 41, 35, 0.08);
     }
 
     .login-header {
@@ -36,7 +36,10 @@
         height: 52px;
         margin: 0 auto 18px;
         border-radius: 10px;
-        background: #1f5f9b;
+
+        /* PathWise green */
+        background: #3f6b57;
+
         color: #ffffff;
         display: flex;
         align-items: center;
@@ -50,12 +53,17 @@
         margin: 0 0 8px;
         font-size: 28px;
         font-weight: 700;
-        color: #172033;
+
+        /* PathWise dark text */
+        color: #202923;
     }
 
     .login-header p {
         margin: 0;
-        color: #6b7280;
+
+        /* PathWise secondary text */
+        color: #68736b;
+
         font-size: 15px;
         line-height: 1.5;
     }
@@ -75,7 +83,8 @@
     .form-group label {
         font-size: 14px;
         font-weight: 600;
-        color: #374151;
+
+        color: #37423b;
     }
 
     .input-wrapper {
@@ -87,7 +96,9 @@
         left: 15px;
         top: 50%;
         transform: translateY(-50%);
-        color: #9ca3af;
+
+        color: #9aa49d;
+
         font-size: 15px;
         pointer-events: none;
     }
@@ -95,41 +106,61 @@
     .form-input {
         width: 100%;
         box-sizing: border-box;
+
         padding: 13px 14px 13px 42px;
-        border: 1px solid #d1d5db;
+
+        border: 1px solid #cfd8d1;
         border-radius: 7px;
+
         background: #ffffff;
-        color: #172033;
+        color: #202923;
+
         font-size: 15px;
         outline: none;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
     }
 
     .form-input::placeholder {
-        color: #9ca3af;
+        color: #9aa49d;
     }
 
     .form-input:focus {
-        border-color: #1f5f9b;
-        box-shadow: 0 0 0 3px rgba(31, 95, 155, 0.10);
+        border-color: #3f6b57;
+
+        box-shadow:
+            0 0 0 3px rgba(63, 107, 87, 0.10);
     }
 
     .login-button {
         width: 100%;
+
         border: none;
         border-radius: 7px;
+
         padding: 14px 20px;
         margin-top: 4px;
-        background: #1f5f9b;
+
+        /* PathWise green */
+        background: #3f6b57;
+
         color: #ffffff;
+
         font-size: 15px;
         font-weight: 600;
+
         cursor: pointer;
-        transition: background 0.2s ease, transform 0.2s ease;
+
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease;
     }
 
     .login-button:hover {
-        background: #174b7c;
+        /* PathWise dark green */
+        background: #315442;
     }
 
     .login-button:active {
@@ -139,9 +170,12 @@
     .login-divider {
         display: flex;
         align-items: center;
+
         gap: 12px;
         margin: 26px 0 22px;
-        color: #9ca3af;
+
+        color: #9aa49d;
+
         font-size: 13px;
     }
 
@@ -149,19 +183,26 @@
     .login-divider::after {
         content: "";
         flex: 1;
+
         height: 1px;
-        background: #e5e7eb;
+
+        background: #e1e5e1;
     }
 
     .register-text {
         text-align: center;
+
         margin: 0;
-        color: #6b7280;
+
+        color: #68736b;
+
         font-size: 14px;
     }
 
     .register-link {
-        color: #1f5f9b;
+        /* PathWise green */
+        color: #3f6b57;
+
         font-weight: 600;
         text-decoration: none;
     }
@@ -172,13 +213,17 @@
 
     .login-note {
         text-align: center;
+
         margin-top: 22px;
-        color: #9ca3af;
+
+        color: #9aa49d;
+
         font-size: 12px;
         line-height: 1.5;
     }
 
     @media (max-width: 500px) {
+
         .login-page {
             padding: 30px 15px;
         }
@@ -190,8 +235,10 @@
         .login-header h1 {
             font-size: 25px;
         }
+
     }
 </style>
+
 
 <div class="login-page">
 
@@ -213,13 +260,16 @@
 
             </div>
 
+
             <form method="POST"
                   action="{{ url_for('main.login') }}"
                   class="login-form">
 
                 <div class="form-group">
 
-                    <label for="email">Email address</label>
+                    <label for="email">
+                        Email address
+                    </label>
 
                     <div class="input-wrapper">
 
@@ -242,7 +292,9 @@
 
                 <div class="form-group">
 
-                    <label for="password">Password</label>
+                    <label for="password">
+                        Password
+                    </label>
 
                     <div class="input-wrapper">
 
@@ -276,12 +328,16 @@
 
 
             <p class="register-text">
+
                 Don't have an account?
 
                 <a href="{{ url_for('main.register') }}"
                    class="register-link">
+
                     Create an account
+
                 </a>
+
             </p>
 
         </div>
