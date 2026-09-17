@@ -1,36 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Path System</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}PathWise{% endblock %}
+    </title>
+
+    <style>
+
+        /* =========================
+           BASIC RESET
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #172033;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 68px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+        }
+
+
+        /* PathWise brand */
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            color: #172033;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .brand-icon {
+            width: 36px;
+            height: 36px;
+
+            background: #1f5f9b;
+            color: #ffffff;
+
+            border-radius: 7px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+
+        /* Navigation links */
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .navbar-links a {
+            color: #4b5563;
+            font-size: 14px;
+            font-weight: 500;
+
+            transition: color 0.2s ease;
+        }
+
+        .navbar-links a:hover {
+            color: #1f5f9b;
+        }
+
+
+        /* Logout button */
+
+        .nav-logout {
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+
+            padding: 8px 15px;
+
+            color: #374151 !important;
+        }
+
+        .nav-logout:hover {
+            border-color: #1f5f9b;
+            color: #1f5f9b !important;
+        }
+
+
+        /* =========================
+           FLASH MESSAGES
+        ========================= */
+
+        .flash-container {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 20px auto 0;
+        }
+
+        .flash-message {
+            padding: 12px 16px;
+
+            background: #ffffff;
+
+            border: 1px solid #dbe1e8;
+            border-radius: 7px;
+
+            color: #374151;
+
+            font-size: 14px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .main-content {
+            min-height: calc(100vh - 128px);
+        }
+
+
+        /* =========================
+           COMMON BUTTONS
+        ========================= */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 11px 18px;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            border: 1px solid transparent;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+
+        .btn-primary {
+            background: #1f5f9b;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #174b7c;
+        }
+
+
+        .btn-secondary {
+            background: #ffffff;
+            color: #374151;
+
+            border-color: #d1d5db;
+        }
+
+        .btn-secondary:hover {
+            border-color: #1f5f9b;
+            color: #1f5f9b;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            height: 60px;
+
+            background: #ffffff;
+
+            border-top: 1px solid #e5e7eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #9ca3af;
+
+            font-size: 12px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                height: auto;
+                min-height: 68px;
+
+                padding: 12px 20px;
+
+                flex-wrap: wrap;
+
+                gap: 12px;
+            }
+
+            .navbar-links {
+                gap: 15px;
+            }
+
+            .navbar-links a {
+                font-size: 13px;
+            }
+
+            .main-content {
+                min-height: calc(100vh - 140px);
+            }
+        }
+
+    </style>
+
 </head>
+
+
 <body>
-    <header class="navbar">
-        <div class="container">
-            <a href="{{ url_for('main.index') }}" class="navbar-brand">Learning Path System</a>
-            <nav class="navbar-nav">
-    {% if current_user.is_authenticated %}
-        <span>Hi, {{ current_user.name }}</span>
-        <a href="{{ url_for('main.logout') }}">Logout</a>
-    {% else %}
-        <a href="{{ url_for('main.login') }}">Login</a>
-        <a href="{{ url_for('main.register') }}">Register</a>
-    {% endif %}
-</nav>
+
+
+    <!-- =========================
+         NAVIGATION BAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <a href="{{ url_for('main.index') }}"
+           class="navbar-brand">
+
+            <span class="brand-icon">
+                PW
+            </span>
+
+            <span>
+                PathWise
+            </span>
+
+        </a>
+
+
+        <div class="navbar-links">
+
+            {% if current_user.is_authenticated %}
+
+                <a href="{{ url_for('main.student_dashboard') }}">
+                    Dashboard
+                </a>
+
+                <a href="{{ url_for('main.logout') }}"
+                   class="nav-logout">
+                    Logout
+                </a>
+
+            {% else %}
+
+                <a href="{{ url_for('main.login') }}">
+                    Login
+                </a>
+
+                <a href="{{ url_for('main.register') }}">
+                    Register
+                </a>
+
+            {% endif %}
 
         </div>
-    </header>
 
-    <main class="container">
-        {% block content %}{% endblock %}
+    </nav>
+
+
+    <!-- =========================
+         FLASH MESSAGES
+    ========================== -->
+
+    <div class="flash-container">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                {% for category, message in messages %}
+
+                    <div class="flash-message">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+    </div>
+
+
+    <!-- =========================
+         PAGE CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        {% block content %}
+
+        {% endblock %}
+
     </main>
 
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer class="footer">
-        <div class="container">
-            &copy; 2026 College Project
-        </div>
+
+        PathWise · Personalized Learning Path System
+
     </footer>
+
+
 </body>
+
 </html>

@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <h1>Student Dashboard</h1>
+    <h2>Student Dashboard</h2>
 
     <hr>
 
@@ -12,7 +12,7 @@
         Welcome, {{ current_user.name }}!
     </p>
 
-    <h2>What do you want to do?</h2>
+    <h3>What do you want to do?</h3>
 
     <div class="choice-container">
 
@@ -22,7 +22,7 @@
 
         <div class="choice-card">
 
-            <h3>🎯 I Know My Career</h3>
+            <h4> I Know My Career Path</h4>
 
             <p>
                 I already know which career I want to pursue.
@@ -34,7 +34,7 @@
                 href="{{ url_for('main.select_career') }}"
                 class="choice-button">
 
-                Choose My Career
+                Choose My Career Path
 
             </a>
 
@@ -47,7 +47,7 @@
 
         <div class="choice-card">
 
-            <h3>🔍 I Don't Know My Career</h3>
+            <h4> I Don't Know My Career Path</h4>
 
             <p>
                 I'm not sure which career is right for me.
